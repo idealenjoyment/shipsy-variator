@@ -50,7 +50,9 @@ The core assignment engine maps any arbitrary user ID and experiment key to a un
 
 ### 1. Hash & Salt Concatenation
 To prevent user alignment biases (which would result in a single user consistently landing in the same bucket across all experiments), we combine and salt the keys:
-$$\text{Input String} = \text{experiment\_key} + \text{":"} + \text{user\_id}$$
+```text
+Input String = experiment_key + ":" + user_id
+```
 
 ### 2. Cryptographic Projection
 We run an MD5 digest over the UTF-8 encoded string. To project it onto a float ratio without precision loss:
